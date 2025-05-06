@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Wrecking Ball Tech</title>
+    <style>
+        * {
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+          font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+          background-color: #f0f0f0;
+          color: #333;
+          max-width: 1800px;
+          margin: 0 auto;
+        }
+
+        .top-container {
+          position: fixed;
+          width: 100%;
+          max-width: 1800px;
+          z-index: 100;
+          transition: transform 0.4s ease;
+        }
+
+        header {
+          background-color: #2c3e50;
+          color: #ecf0f1;
+          padding: 30px;
+          display: flex;
+          align-items: center;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo {
+          width: 80px;
+          height: 80px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-right: 30px;
+        }
+
+        .logo img {
+          max-width: 100%;
+          max-height: 100%;
+        }
+
+        nav {
+          background-color: #34495e;
+          padding: 15px 30px;
+          display: flex;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+          margin-right: 60px;
+          text-decoration: none;
+          color: #ecf0f1;
+          font-weight: bold;
+          font-size: 18px;
+          transition: all 0.3s;
+          padding: 8px 16px;
+          border-radius: 4px;
+        }
+
+        nav a:hover {
+          color: #3498db;
+          transform: translateY(-2px);
+        }
+
+       main {
+  padding-top: 340px; /* Increased to ensure content clears header+nav */
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 40px;
+}
+
+
+        h1 {
+          text-align: center;
+          margin-bottom: 30px;
+          color: #2c3e50;
+        }
+
+        .grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+          gap: 30px;
+        }
+
+        .tech-card {
+          background-color: white;
+          padding: 20px;
+          border: 2px solid #3498db;
+          border-radius: 8px;
+          text-align: center;
+          cursor: pointer;
+          transition: transform 0.3s;
+        }
+
+        .tech-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .modal {
+          display: none;
+          position: fixed;
+          top: 0; left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0,0,0,0.75);
+          justify-content: center;
+          align-items: center;
+          z-index: 9999;
+        }
+
+        .modal-content {
+          background: #fff;
+          padding: 20px;
+          max-width: 900px;
+          width: 90%;
+          border-radius: 8px;
+          position: relative;
+        }
+
+        .modal-content iframe {
+          width: 100%;
+          height: 360px;
+          border-radius: 6px;
+        }
+
+        .modal-content p {
+          margin-top: 15px;
+          font-size: 16px;
+          color: #333;
+        }
+
+        .close-button {
+          position: absolute;
+          top: 10px;
+          right: 15px;
+          font-size: 24px;
+          cursor: pointer;
+          color: #aaa;
+        }
+
+        .close-button:hover {
+          color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-container" id="topContainer">
+    <header>
+        <div class="logo">
+            <img src="hammondlogo.png" alt="Hammond Logo" />
+        </div>
+        <h1>Wrecking Ball Techs</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="lore.html">Lore</a>
+        <a href="abilities.html">Abilities</a>
+        <a href="matchUps.html">Match ups</a>
+        <a href="tech.html">Techs</a>
+    </nav>
+</div>
+
+<main>
+    <h1>Advanced Techniques</h1>
+    <div class="grid" id="techGrid">
+        <!-- Buttons generated here -->
+    </div>
+</main>
+
+<div class="modal" id="videoModal">
+    <div class="modal-content">
+        <span class="close-button" onclick="closeModal()">&times;</span>
+        <div id="techVideoContainer"></div>
+        <p id="techDescription"></p>
+    </div>
+</div>
+
+<script>
+    const techniques = [
+      { name: "Rebound", file: "https://streamable.com/tzb7ej", desc: "Grapple to a wall and bounce back instantly." },
+      { name: "B Hop", file: "https://streamable.com/uovjj8", desc: "A momentum preservation trick that allows bouncing while grounded." },
+      { name: "Zipline", file: "https://streamable.com/oairvq", desc: "Smooth transition between grapples for linear momentum." },
+      { name: "Triple Boop", file: "https://streamable.com/x1fclb", desc: "An advanced sequence to hit three targets in succession." },
+      { name: "Wall Jump", file: "https://streamable.com/a8lgn6", desc: "Various wall jump techniques using grapple corners and edges." },
+      { name: "Washing Machine/Blender", file: "https://streamable.com/vsarh0", desc: "Continuous spinning in small spaces to disrupt enemies." },
+      { name: "Toronto Kick", file: "https://streamable.com/clb61g", desc: "A launch maneuver using certain map geometry in New Queen Street." },
+      { name: "Momentum Stall", file: "https://streamable.com/ihz7m2", desc: "Cancel momentum and hover in air using grapple tension." },
+      { name: "Pinball", file: "https://streamable.com/11bqci", desc: "Bouncing repeatedly off surfaces to be unpredictable." },
+      { name: "Fireball Super Jump", file: "https://streamable.com/2ydry4", desc: "Combines fireball and jump input for maximum height gain." },
+      { name: "Double Boop", file: "https://streamable.com/d6dji1", desc: "Use grapple and piledriver to knock two targets back-to-back." }
+    ];
+
+    const techGrid = document.getElementById("techGrid");
+    const videoModal = document.getElementById("videoModal");
+    const techDescription = document.getElementById("techDescription");
+    const techVideoContainer = document.getElementById("techVideoContainer");
+
+    techniques.forEach(t => {
+      const card = document.createElement("div");
+      card.className = "tech-card";
+      card.innerHTML = `<h3>${t.name}</h3><p>Click to view</p>`;
+      card.onclick = () => openModal(t.file, t.desc);
+      techGrid.appendChild(card);
+    });
+
+    function openModal(file, desc) {
+      techVideoContainer.innerHTML = `<iframe src="${file}" frameborder="0" allowfullscreen></iframe>`;
+      techDescription.textContent = desc;
+      videoModal.style.display = "flex";
+    }
+
+    function closeModal() {
+      videoModal.style.display = "none";
+      techVideoContainer.innerHTML = "";
+    }
+</script>
+
+</body>
+</html>

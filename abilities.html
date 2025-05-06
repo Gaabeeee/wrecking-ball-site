@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Wrecking Ball Abilities</title>
+    <style>
+        * {
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+          font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+          background-color: #f0f0f0;
+          color: #333;
+          max-width: 1800px;
+          margin: 0 auto;
+          padding: 0;
+        }
+
+        .top-container {
+          position: fixed;
+          width: 100%;
+          max-width: 1800px;
+          z-index: 100;
+          transition: transform 0.4s ease;
+        }
+
+        header {
+          background-color: #2c3e50;
+          color: #ecf0f1;
+          padding: 30px;
+          display: flex;
+          align-items: center;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo {
+          width: 80px;
+          height: 80px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-right: 30px;
+        }
+
+        .logo img {
+          max-width: 100%;
+          max-height: 100%;
+        }
+
+        nav {
+          background-color: #34495e;
+          padding: 15px 30px;
+          display: flex;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+          margin-right: 60px;
+          text-decoration: none;
+          color: #ecf0f1;
+          font-weight: bold;
+          font-size: 18px;
+          transition: all 0.3s;
+          padding: 8px 16px;
+          border-radius: 4px;
+        }
+
+        nav a:hover {
+          color: #3498db;
+          transform: translateY(-2px);
+        }
+
+        main {
+          padding-top: 200px;
+          min-height: 100vh;
+        }
+
+        .ability-section {
+          min-height: 100vh;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 40px;
+          background-size: cover;
+          background-position: center;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .ability-section::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(44, 62, 80, 0.5);
+          z-index: 1;
+        }
+
+        .ability-section:nth-child(odd) {
+          background-color: #ecf0f1;
+        }
+
+        .ability-section:nth-child(even) {
+          background-color: #bdc3c7;
+        }
+
+        .ability-content {
+          background-color: #f5f5f5;
+          border-radius: 8px;
+          padding: 40px;
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+          max-width: 1200px;
+          width: 90%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          position: relative;
+          z-index: 2;
+        }
+
+    .ability-icon {
+  width: 400px;
+  height: 250px;
+  background-color: #000;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.ability-icon img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+}
+
+
+
+
+
+.ability-image {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  margin: 20px 0;
+  display: none; /* Hide the separate image box now that it's in the circle */
+}
+
+
+
+        h1 {
+          font-size: 32px;
+          margin-bottom: 30px;
+          color: #ecf0f1;
+        }
+
+        h2 {
+          font-size: 28px;
+          margin-bottom: 20px;
+          color: #2c3e50;
+        }
+
+        .ability-content p {
+          font-size: 18px;
+          line-height: 1.7;
+          margin-bottom: 20px;
+          color: #2c3e50;
+        }
+
+        .stats {
+          margin: 25px 0;
+          padding: 20px;
+          background-color: #f9f9f9;
+          border-radius: 6px;
+          border-left: 4px solid #3498db;
+          width: 100%;
+          text-align: left;
+        }
+
+        .stats h3 {
+          color: #2c3e50;
+          margin-bottom: 10px;
+          font-size: 20px;
+        }
+
+        .stats ul {
+          padding-left: 20px;
+        }
+
+        .stats li {
+          margin-bottom: 8px;
+          color: #34495e;
+        }
+
+        .tips {
+          margin: 20px 0;
+          padding: 20px;
+          background-color: #f2f9ff;
+          border-radius: 6px;
+          border-left: 4px solid #f39c12;
+          width: 100%;
+          text-align: left;
+        }
+
+        .tips h3 {
+          color: #f39c12;
+          margin-bottom: 10px;
+          font-size: 20px;
+        }
+
+        .tips ul {
+          padding-left: 20px;
+        }
+
+        .tips li {
+          margin-bottom: 8px;
+          color: #34495e;
+        }
+
+        footer {
+          background-color: #2c3e50;
+          color: #ecf0f1;
+          padding: 25px;
+          text-align: center;
+        }
+
+        @media (max-width: 768px) {
+          header {
+            padding: 20px;
+          }
+
+          .logo {
+            width: 60px;
+            height: 60px;
+          }
+
+          nav {
+            padding: 10px;
+            flex-wrap: wrap;
+          }
+
+          nav a {
+            margin-right: 20px;
+            margin-bottom: 10px;
+            font-size: 16px;
+          }
+
+          main {
+            padding-top: 150px;
+          }
+
+          .ability-content {
+            padding: 25px;
+          }
+
+          h1 {
+            font-size: 28px;
+          }
+
+          h2 {
+            font-size: 24px;
+          }
+        }
+    </style>
+</head>
+<body>
+<div class="top-container" id="topContainer">
+    <header>
+        <div class="logo">
+            <img src="hammondlogo.png" alt="Hammond Logo" />
+        </div>
+        <h1>Wrecking Ball Abilities</h1>
+    </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="lore.html">Lore</a>
+        <a href="abilities.html">Abilities</a>
+        <a href="matchUps.html">Match ups</a>
+        <a href="tech.html">Techs</a>
+    </nav>
+
+</div>
+
+<main>
+    <!-- Quad Cannons Section -->
+    <section class="ability-section">
+        <div class="ability-content">
+            <div class="ability-icon">
+                <img src="QuadCanons.jpg" alt="Quad Cannons" />
+            </div>
+
+            <h2>Quad Cannons</h2>
+            <p>Wrecking Ball's primary weapon is a set of four automatic cannons that fire rapidly, dealing damage at short to medium range.</p>
+
+            <div class="ability-image">
+                <img src = "QuadCanons.jpg"/>
+            </div>
+
+            <div class="stats">
+                <h3>Stats:</h3>
+                <ul>
+                    <li>Damage: 5 per bullet (2.5 at long range)</li>
+                    <li>Rate of Fire: 25 rounds per second</li>
+                    <li>Ammo: 80 rounds</li>
+                    <li>Reload Time: 2 seconds</li>
+                    <li>Falloff Range: 15-25 meters</li>
+                </ul>
+            </div>
+
+            <div class="tips">
+                <h3>Tips:</h3>
+                <ul>
+                    <li>The Quad Cannons are most effective at close range due to their spread pattern.</li>
+                    <li>They're excellent for finishing off low-health targets after using your crowd control abilities.</li>
+                    <li>When aiming, maintain tracking rather than flicking due to the hitscan nature of his guns.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roll Section -->
+    <section class="ability-section">
+        <div class="ability-content">
+            <div class="ability-icon">
+                <img src="Roll.jpg" alt="Quad Cannons" />
+            </div>
+
+            <h2>Roll</h2>
+            <p>Wrecking Ball transforms into a ball, increasing his maximum movement speed and allowing him to roll through enemies, dealing damage on impact.</p>
+
+            <div class="ability-image">
+                <img src = "Roll.jpg"/>
+            </div>
+
+            <div class="stats">
+                <h3>Stats:</h3>
+                <ul>
+                    <li>Damage: 50 per collision</li>
+                    <li>Movement Speed: 10 m/s (150% increase)</li>
+                    <li>Cooldown: None (Toggle ability)</li>
+                    <li>Knockback: Minor knockback on collision</li>
+                </ul>
+            </div>
+
+            <div class="tips">
+                <h3>Tips:</h3>
+                <ul>
+                    <li>Use Roll to quickly traverse the map and return to the fight after respawning.</li>
+                    <li>Rolling through enemies can disrupt their positioning, especially snipers and supports.</li>
+                    <li>While in Roll form, you cannot use your primary weapon but gain increased mobility.</li>
+                    <li>Roll makes you harder to hit due to your smaller hitbox and faster movement speed.</li>
+                    <li>Mastering the transition between Roll and normal mode is key to Hammond's playstyle.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Grappling Claw Section -->
+    <section class="ability-section">
+        <div class="ability-content">
+            <div class="ability-icon">
+                <img src="Grapple.jpg" alt="Quad Cannons" />
+            </div>
+
+            <h2>Grappling Claw</h2>
+            <p>Wrecking Ball launches a grappling claw, attaching to surfaces and allowing him to swing around the environment, building momentum for powerful strikes.</p>
+
+            <div class="ability-image">
+                <img src = "Grapple.jpg"/>
+            </div>
+
+            <div class="stats">
+                <h3>Stats:</h3>
+                <ul>
+                    <li>Range: 23 meters</li>
+                    <li>Cooldown: 5 seconds</li>
+                    <li>Max Swing Duration: Infinite until you go into fireball, and then it is 8 seconds</li>
+                    <li>Damage: Up to 100 based on speed (when used with Piledriver)</li>
+                </ul>
+            </div>
+
+            <div class="tips">
+                <h3>Tips:</h3>
+                <ul>
+                    <li>Grappling Claw is Hammond's signature ability, enabling his unique movement mechanics.</li>
+                    <li>Use environmental objects to swing around corners and surprise enemies.</li>
+                    <li>Build momentum by swinging in circles before releasing to maximize your impact.</li>
+                    <li>The grapple can be released early by pressing the ability button again.</li>
+                    <li>When combined with Piledriver, this ability creates one of the most devastating tank combos in the game.</li>
+                    <li>Practice "fireball" techniques by building maximum momentum before colliding with enemies.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Piledriver Section -->
+    <section class="ability-section">
+        <div class="ability-content">
+            <div class="ability-icon">
+                <img src="PileDriver.jpg" alt="Quad Cannons" />
+            </div>
+
+            <h2>Piledriver</h2>
+            <p>Wrecking Ball slams into the ground below, dealing damage and launching enemies into the air, making them vulnerable to follow-up attacks.</p>
+
+            <div class="ability-image">
+                <img src = "PileDriver.jpg"/>
+            </div>
+
+            <div class="stats">
+                <h3>Stats:</h3>
+                <ul>
+                    <li>Damage: 20-100 (based on distance from epicenter)</li>
+                    <li>Vertical Knockback: 5-20 meters</li>
+                    <li>Area of Effect: 8-meter radius</li>
+                    <li>Cooldown: 10 seconds</li>
+                    <li>Requirements: Must be airborne to activate</li>
+                </ul>
+            </div>
+
+            <div class="tips">
+                <h3>Tips:</h3>
+                <ul>
+                    <li>Piledriver is most effective when targeting multiple enemies grouped together.</li>
+                    <li>The knockup effect allows for easy follow-up attacks with your Quad Cannons.</li>
+                    <li>Use it to interrupt enemy ultimates that require channel time.</li>
+                    <li>Combine with Grappling Claw to gain height before executing Piledriver.</li>
+                    <li>Can be used as an escape mechanism when in danger, as the animation provides brief protection.</li>
+                    <li>Perfect for displacing enemies from high ground positions or off the map entirely.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Adaptive Shield Section -->
+    <section class="ability-section">
+        <div class="ability-content">
+            <div class="ability-icon">
+                <img src="AdaptiveShields.jpg" alt="Quad Cannons" />
+            </div>
+
+            <h2>Adaptive Shield</h2>
+            <p>Wrecking Ball generates temporary personal shields that increase based on the number of enemies nearby, providing crucial survivability.</p>
+
+            <div class="ability-image">
+                <img src = "AdaptiveShields.jpg" />
+            </div>
+
+            <div class="stats">
+                <h3>Stats:</h3>
+                <ul>
+                    <li>Base Shield: 100</li>
+                    <li>Additional Shield per Enemy: 100</li>
+                    <li>Maximum Shield: 700 (with 6 enemies)</li>
+                    <li>Duration: 7 seconds</li>
+                    <li>Cooldown: 15 seconds</li>
+                </ul>
+            </div>
+
+            <div class="tips">
+                <h3>Tips:</h3>
+                <ul>
+                    <li>Activate Adaptive Shield when diving into multiple enemies for maximum value.</li>
+                    <li>The additional health doesn't feed enemy ultimate charge, making it valuable in team fights.</li>
+                    <li>Time this ability after using Piledriver to survive focus fire when you're vulnerable.</li>
+                    <li>Can be used preemptively before engaging if you expect to take heavy damage.</li>
+                    <li>Remember the shield health decays over time, so don't activate it too early.</li>
+                    <li>When used properly, this ability makes Hammond one of the tankiest heroes in the game.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Minefield Section -->
+    <section class="ability-section">
+        <div class="ability-content">
+            <div class="ability-icon">
+                <img src="Minefield.jpg" alt="Quad Cannons" />
+            </div>
+
+            <h2>Minefield (Ultimate)</h2>
+            <p>Wrecking Ball deploys a field of proximity mines that damage and knock back enemies. Perfect for area denial and zoning during team fights.</p>
+
+            <div class="ability-image">
+                <img src = "Minefield.jpg"/>
+            </div>
+
+            <div class="stats">
+                <h3>Stats:</h3>
+                <ul>
+                    <li>Damage per Mine: 130</li>
+                    <li>Activation Time: 0.5 seconds</li>
+                    <li>Duration: 20 seconds</li>
+                    <li>Knockback: Significant vertical and horizontal</li>
+                    <li>Ultimate Cost: 1850 points</li>
+                </ul>
+            </div>
+
+            <div class="tips">
+                <h3>Tips:</h3>
+                <ul>
+                    <li>Deploy Minefield from above for maximum spread and effectiveness.</li>
+                    <li>Combine with Piledriver to deploy mines while enemies are airborne, making them land on the mines.</li>
+                    <li>Use to control objectives or deny areas during critical pushes.</li>
+                    <li>Mines can be placed on payload or moving objectives for mobile area denial.</li>
+                    <li>Effective at splitting enemy teams when placed between frontline and backline.</li>
+                    <li>Can be used defensively to protect your team during retreats.</li>
+                    <li>Mines can be destroyed by enemy fire, so place them strategically.</li>
+                    <li> Minefield is unique in that it is one of the few ultimates in the game where you can built towards you next ult while they're deployed</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</main>
+<section class="ability-section">
+    <div class="ability-content">
+        <h2>Perks</h2>
+        <p>Wrecking Ball can unlock perks as he levels up. Minor perks become available at level 2 and major perks at level 3. These allow him to enhance specific aspects of his kit and survivability.</p>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 20px;">
+            <!-- Steamroller -->
+            <div class="stats" style="flex: 1 1 400px;">
+                <h3>Steamroller (Minor Perk)</h3>
+                <ul>
+                    <li>Type: Minor Perk</li>
+                    <li>Effect: Roll impacts deal 100% more damage to Tanks</li>
+                    <li>Damage: 120 to Tanks</li>
+                    <li>Headshot: ✕</li>
+                </ul>
+                <div class="tips">
+                    <h3>Upsides:</h3>
+                    <ul>
+                        <li>Highly effective against tank-heavy comps, giving Hammond more burst potential.</li>
+                        <li>Rewards aggressive dive play with stronger openings in team fights.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Pack Rat -->
+            <div class="stats" style="flex: 1 1 400px;">
+                <h3>Pack Rat (Minor Perk)</h3>
+                <ul>
+                    <li>Type: Minor Perk</li>
+                    <li>Effect: Health packs heal an additional 100 HP</li>
+                </ul>
+                <div class="tips">
+                    <h3>Upsides:</h3>
+                    <ul>
+                        <li>Enhances self-sustain when playing independently or away from healers.</li>
+                        <li>Synergizes well with Hammond’s mobility, allowing fast rotations to health packs mid-combat.</li>
+                        <li>Works on both Mini and Mega health packs. </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Hang Time -->
+            <div class="stats" style="flex: 1 1 400px;">
+                <h3>Hang Time (Major Perk)</h3>
+                <ul>
+                    <li>Type: Major Perk</li>
+                    <li>Damage: 150 - 20</li>
+                    <li>Duration: 1.1s windup</li>
+                    <li>Movement Speed (up): 3.7 m/s</li>
+                    <li>Movement Speed (side): 6 m/s</li>
+                </ul>
+                <div class="tips">
+                    <h3>Upsides:</h3>
+                    <ul>
+                        <li>Massively increases burst potential when comboed with grapple setups.</li>
+                        <li>Air control during windup allows creative use of map geometry.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Transfer Efficiency -->
+            <div class="stats" style="flex: 1 1 400px;">
+                <h3>Transfer Efficiency (Major Perk)</h3>
+                <ul>
+                    <li>Type: Major Perk</li>
+                    <li>Effect: Adaptive Shield transfer costs 50% less health</li>
+                    <li>Cooldown Reduction: -1.5s per ally affected</li>
+                </ul>
+                <div class="tips">
+                    <h3>Upsides:</h3>
+                    <ul>
+                        <li>Improves team utility by allowing safer, more frequent shield sharing.</li>
+                        <li>Pairs well with clustered team fights and brawls where allies are grouped.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer>
+    All Overwatch content and materials are trademarks and copyrights of Blizzard Entertainment.
+</footer>
+
+<script>
+    // Script to hide header on scroll down and show on scroll up
+    let prevScrollPos = window.pageYOffset;
+    const topContainer = document.getElementById("topContainer");
+    const headerHeight = topContainer.offsetHeight;
+
+    window.onscroll = function () {
+      const currentScrollPos = window.pageYOffset;
+
+      if (prevScrollPos > currentScrollPos) {
+        topContainer.style.transform = "translateY(0)";
+      } else {
+        topContainer.style.transform = "translateY(-" + headerHeight + "px)";
+      }
+
+      prevScrollPos = currentScrollPos;
+    };
+</script>
+</body>
+</html>
