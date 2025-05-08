@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Wrecking Ball Matchups</title>
+    <style>
+        * {
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+          font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+          background-color: #f0f0f0;
+          color: #333;
+          max-width: 1800px;
+          margin: 0 auto;
+        }
+
+        .top-container {
+          position: fixed;
+          width: 100%;
+          max-width: 1800px;
+          z-index: 100;
+          transition: transform 0.4s ease;
+        }
+
+        header {
+          background-color: #2c3e50;
+          color: #ecf0f1;
+          padding: 30px;
+          display: flex;
+          align-items: center;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo {
+          width: 80px;
+          height: 80px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-right: 30px;
+        }
+
+        .logo img {
+          max-width: 100%;
+          max-height: 100%;
+        }
+
+        nav {
+          background-color: #34495e;
+          padding: 15px 30px;
+          display: flex;
+          box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        nav a {
+          margin-right: 60px;
+          text-decoration: none;
+          color: #ecf0f1;
+          font-weight: bold;
+          font-size: 18px;
+          transition: all 0.3s;
+          padding: 8px 16px;
+          border-radius: 4px;
+        }
+
+        nav a:hover {
+          color: #3498db;
+          transform: translateY(-2px);
+        }
+
+        main {
+          padding-top: 220px; /* Adding extra padding for the fixed header */
+          padding: 220px 40px 40px 40px; /* Updated to create gap between HUD and content */
+        }
+
+        h1 {
+          font-size: 36px;
+          color: #2c3e50;
+          margin-bottom: 30px;
+          text-align: center;
+        }
+
+        .matchup-category {
+          margin-bottom: 50px;
+        }
+
+        .matchup-category h2 {
+          font-size: 28px;
+          color: #2c3e50;
+          margin-bottom: 20px;
+          border-bottom: 2px solid #3498db;
+          padding-bottom: 5px;
+        }
+
+        .matchup-entry {
+          display: flex;
+          align-items: center;
+          background-color: #ffffff;
+          border-radius: 8px;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+          padding: 20px;
+          margin-bottom: 20px;
+        }
+
+        .matchup-entry img {
+          width: 100px;
+          height: 100px;
+          object-fit: cover;
+          border-radius: 50%;
+          margin-right: 20px;
+          border: 2px solid #3498db;
+        }
+
+        .matchup-text h3 {
+          font-size: 22px;
+          color: #2c3e50;
+          margin-bottom: 8px;
+        }
+
+        .matchup-text p {
+          font-size: 16px;
+          color: #555;
+        }
+
+        footer {
+          background-color: #2c3e50;
+          color: #ecf0f1;
+          padding: 25px;
+          text-align: center;
+        }
+
+        @media (max-width: 768px) {
+          .matchup-entry {
+            flex-direction: column;
+            text-align: center;
+          }
+
+          .matchup-entry img {
+            margin-bottom: 15px;
+          }
+        }
+    </style>
+</head>
+<body>
+<div class="top-container" id="topContainer">
+    <header>
+        <div class="logo">
+            <img src="hammondlogo.png" alt="Hammond Logo" />
+        </div>
+        <h1>Wrecking Ball Matchups</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="lore.html">Lore</a>
+        <a href="abilities.html">Abilities</a>
+        <a href="matchUps.html">Match ups</a>
+        <a href="tech.html">Techs</a>
+    </nav>
+</div>
+
+<main>
+
+    <div class="matchup-category">
+        <h2>Strong Matchups</h2>
+
+        <div class="matchup-entry">
+            <img src="genji.webp" alt="Genji">
+            <div class="matchup-text">
+                <h3>Genji</h3>
+                <p>Despite Genji's mobility, Hammond can easily track him with primary fire. Your shields neutralize his damage output, and Piledriver can disrupt his positioning after dash.</p>
+            </div>
+        </div>
+
+        <div class="matchup-entry">
+            <img src="widowmaker.webp" alt="Widowmaker">
+            <div class="matchup-text">
+                <h3>Widowmaker</h3>
+                <p>Your mobility counters her sniper positioning. Close the gap quickly with Grapple and pressure her with constant harassment. She struggles up close, take advantage of that.</p>
+            </div>
+        </div>
+
+        <div class="matchup-entry">
+            <img src="hanzo.webp" alt="Hanzo">
+            <div class="matchup-text">
+                <h3>Hanzo</h3>
+                <p>Similar to Widowmaker, Hammond's mobility makes it difficult for Hanzo to land consistent shots. Approach from unexpected angles and disrupt his positioning.</p>
+            </div>
+        </div>
+
+
+        <div class="matchup-entry">
+            <img src="baptiste.webp" alt="Baptiste">
+            <div class="matchup-text">
+                <h3>Baptiste</h3>
+                <p>While his Immortality Field can be annoying, you can easily force Baptiste out of it by booping him.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="matchup-category">
+        <h2>Difficult Matchups</h2>
+
+        <div class="matchup-entry">
+            <img src="sombra.webp" alt="Sombra">
+            <div class="matchup-text">
+                <h3>Sombra</h3>
+                <p>Sombra can hack Hammond out of Roll and Grapple, completely stopping his mobility. Watch for when she uses her translocator and coordinate with your team to pressure her out.</p>
+            </div>
+        </div>
+
+        <div class="matchup-entry">
+            <img src="cassidy.webp" alt="Cassidy">
+            <div class="matchup-text">
+                <h3>Cassidy</h3>
+                <p>His high damage with fan the hammer along with his ability to hinder you make him a rather difficult to deal with</p>
+            </div>
+        </div>
+
+        <div class="matchup-entry">
+            <img src="roadhog.webp" alt="Roadhog">
+            <div class="matchup-text">
+                <h3>Roadhog</h3>
+                <p>Roadhog's Hook completely kills your momentum and brigs you closer to him where Roadhog excels.</p>
+            </div>
+        </div>
+
+        <div class="matchup-entry">
+            <img src="brig.webp" alt="Brigitte">
+            <div class="matchup-text">
+                <h3>Brigitte</h3>
+                <p>Her Shield Bash and Whip Shot can interrupt your mobility. The burst healing from her Repair Pack reduces your damage output. Try to engage when her cooldowns or shield is down.</p>
+            </div>
+        </div>
+
+        <div class="matchup-entry">
+            <img src="ana.webp" alt="Ana">
+            <div class="matchup-text">
+                <h3>Ana</h3>
+                <p>While she's vulnerable to dives alone, her team comp can make up for that. A skilled Ana can Sleep Dart you mid-roll allowing for her team to follow up. Approach with caution.</p>
+            </div>
+        </div>
+
+        <div class="matchup-entry">
+            <img src="junkerqueen.webp" alt="Junker Queen">
+            <div class="matchup-text">
+                <h3>Junker Queen</h3>
+                <p>Her Commanding Shout provides team-wide durability that can negate your dive impact. Her Jagged Blade can interrupt your momentum and function similarly to hog hook.</p>
+
+
+            </div>
+
+        </div>
+        <div class="matchup-entry">
+            <img src="zenyatta.webp" alt="Zenyatta">
+            <div class="matchup-text">
+                <h3>Zenyatta</h3>
+                <p>Zenyatta's discord orb forces hammond to play on the defensive since he can easily be killed very quickly if he is not careful.</p>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    All Overwatch content and materials are trademarks and copyrights of Blizzard Entertainment.
+</footer>
+
+<script>
+    let prevScrollPos = window.pageYOffset;
+    const topContainer = document.getElementById("topContainer");
+    const headerHeight = topContainer.offsetHeight;
+
+    window.onscroll = function () {
+      const currentScrollPos = window.pageYOffset;
+      topContainer.style.transform =
+        prevScrollPos > currentScrollPos ? "translateY(0)" : "translateY(-" + headerHeight + "px)";
+      prevScrollPos = currentScrollPos;
+    };
+</script>
+
+</body>
+</html>
